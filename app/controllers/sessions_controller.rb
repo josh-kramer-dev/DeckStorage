@@ -3,8 +3,9 @@ class SessionsController < ApplicationController
 
   def new
   end
-  
+
   def create
+    # byebug
     if params[:name]
       @user = User.find_by(:name => params[:name])
     else
