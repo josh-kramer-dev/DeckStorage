@@ -6,9 +6,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # byebug
-    if params[:name]
-      @user = User.find_by(:name => params[:name])
+    if params[:email]          #need to redirect if email they entered is not present in database
+      # if User.find_by(:email => params[:email])
+         @user = User.find_by(:email => params[:email])
+       # else
+       #   flash[:notice] = "User not found, please try again"
+       #   render 'sessions/new'
+       # end
+
     else
       @user = User.find_or_create_by(uid: auth['uid']) do |u|
         u.name = auth['info']['name']

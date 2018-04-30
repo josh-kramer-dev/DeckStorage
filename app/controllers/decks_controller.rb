@@ -1,9 +1,10 @@
 class DecksController < ApplicationController
-  skip_before_action :verify_user_is_authenticated, only: [:index, :show]
-  
+
   def index
+    @user = User.find_by(params[:user_id])
   end
 
   def show
+    @deck = Deck.find_by(params[:id])
   end
 end

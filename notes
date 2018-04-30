@@ -1,0 +1,44 @@
+MODELS
+  User
+    :name, :email, :password_digest, :uid
+    has_many :decks
+    has_many :cards, through: :decks
+
+  Deck
+    :name, :user_id
+    belongs_to :user
+    has_many :cards
+
+  Card
+    :name, :quantity, :deck_id
+    belongs_to :deck
+
+
+CONTROLLERS
+  UsersController
+    #new
+    #create
+    #show -- route 'users/:id/'--
+      will need to render decks#index
+      user_decks(@user)
+      @user.decks.each do |deck|
+        link_to "#{deck.name}", deck_path(deck)
+      end
+
+  DecksController
+    #show -- route 'users/:id/decks/:id'
+      will need to render deck_list
+      @user.deck.cards.each do |card|
+        li
+          card.name
+          card.quantity
+        li
+      end
+
+    #new
+    #create
+    #destroy
+
+  CardsController - not going to have a link to the individual page, it is just used to make the db records for the deck lists
+    #new
+    #create

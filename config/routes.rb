@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :users
 
-  resources :decks
+  resources :users do
+    resources :decks
+  end
+
+
 
   resources :decks do
     resources :cards

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_user_is_authenticated, only: [:new,:create, :show]
+  skip_before_action :verify_user_is_authenticated, only: [:new,:create]
 
   def new
     @user = User.new
@@ -7,7 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @user = current_user if current_user
+
+    if @user.id != session[:user_id]
+      redirect_to '/'
+    end
   end
 
   def create

@@ -1,0 +1,8 @@
+<h4> Here is the decklist. You will see the cards and their quantity. Want to be able to create new cards to add to this deck, edit the cards, and delete cards from this deck. </h4>
+
+<% @deck.cards.each do |card| %>
+<li>
+    <%= card.name %>
+    <%= card.quantity %>
+</li>
+<% end %>

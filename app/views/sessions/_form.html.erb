@@ -1,6 +1,8 @@
-<%= form_for(@user) do |f| %>
-<%= f.label :email %>
-<%= f.text_field :email %>
-
-
+<%= form_tag('/session', method: :post) do %>
+<%= label_tag(:email, "Enter your email") %>
+<%= text_field_tag(:email) %>
+<br>
+<%= label_tag(:password, "Enter your password") %>
+<%= password_field_tag(:password) %>
+<%= submit_tag("Create Account") %>
 <% end %>
