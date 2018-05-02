@@ -5,6 +5,9 @@ class DecksController < ApplicationController
   end
 
   def show
-    @deck = Deck.find_by(params[:id])
+    if !current_user
+      redirect_to user_path(current_user)
+    end
+    @deck = Deck.find(params[:id])
   end
 end

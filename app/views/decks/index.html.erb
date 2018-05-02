@@ -2,5 +2,5 @@
 
 <h3>Here are your decks. Want to be able to click on their link to go to their page. also want to be able to delete them from here with a button </h3>
 <% @user.decks.each do |deck| %>
-  <%= link_to "#{deck.name}", deck_path(deck)%>
+  <%= link_to "#{deck.name}", user_deck_path(deck)%>
 <% end %>
