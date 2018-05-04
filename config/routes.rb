@@ -4,12 +4,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :decks
   end
-  # 
-  #
-  #
-  # scope :decks do
-  #   resources :cards
-  # end
+
+  scope :decks do
+    resources :cards
+  end
 
   root 'welcome#home'
 
