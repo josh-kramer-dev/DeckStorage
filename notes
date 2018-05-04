@@ -1,8 +1,18 @@
- - form for making a new deck
-    - need deck_controller #new and #create and views decks/new, decks/show, decks/_form
- - form for making a new card
- DONE - create user (not from API)
- - 
+- form for making a new deck
+  - need deck_controller #new and #create and views decks/new, decks/show, decks/_form
+- form for making a new card
+  form_for :card
+  f.label :name
+  f.text_field :name
+  f.label :quantity
+  f.text_field :quantity
+  end
+
+  <%= render '/cards/new' %>
+
+
+DONE - create user (not from API)
+
 
 
 MODELS

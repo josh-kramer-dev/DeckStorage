@@ -4,3 +4,5 @@
 <% @user.decks.each do |deck| %>
   <%= link_to "#{deck.name}", user_deck_path(deck)%>
 <% end %>
+
+<%= link_to "Create a New Deck", new_user_deck_path(@user) %>
