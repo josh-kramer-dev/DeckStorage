@@ -1,3 +1,9 @@
+1 - create form for making a new deck
+2 - create form for making a new card
+
+
+
+
 MODELS
   User
     :name, :email, :password_digest, :uid

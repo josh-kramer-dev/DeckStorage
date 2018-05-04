@@ -1,1 +1,13 @@
 
+<%= form_tag('/users', method: :post) do %>
+<%= label_tag(:name, "Enter your name") %>
+<%= text_field_tag(:name) %>
+<br>
+<%= label_tag(:email, "Enter your email") %>
+<%= text_field_tag(:email) %>
+<br>
+<%= label_tag(:password, "Enter your password") %>
+<%= password_field_tag(:password) %>
+<br>
+<%= submit_tag("Create Account") %>
+<% end %>

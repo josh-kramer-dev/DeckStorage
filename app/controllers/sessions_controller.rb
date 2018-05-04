@@ -7,13 +7,11 @@ class SessionsController < ApplicationController
 
   def create
     if params[:email]          #need to redirect if email they entered is not present in database
-      # if User.find_by(:email => params[:email])
+      if User.find_by(:email => params[:email])
          @user = User.find_by(:email => params[:email])
-       # else
-       #   flash[:notice] = "User not found, please try again"
-       #   render 'sessions/new'
-       # end
-
+       else
+         redirect_to 'sessions/new'
+       end
     else
       @user = User.find_or_create_by(uid: auth['uid']) do |u|
         u.name = auth['info']['name']
@@ -21,6 +19,7 @@ class SessionsController < ApplicationController
         u.password = SecureRandom.hex(9)
         end
     end
+
     @user.save
 
     session[:user_id] = @user.id

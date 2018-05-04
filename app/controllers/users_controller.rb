@@ -15,6 +15,16 @@ class UsersController < ApplicationController
   end
 
   def create
+    user = User.new
+    user.name => params[:name]
+    user.email => params[:email]
+    user.password => params[:password]
+    if user.save
+      redirect_to login_path
+    else
+      redirect_to new_users_path
+    end
   end
+
 
 end
