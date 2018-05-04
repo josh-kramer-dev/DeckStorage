@@ -1,7 +1,8 @@
-1 - create form for making a new deck
-2 - create form for making a new card
-
-
+ - form for making a new deck
+    - need deck_controller #new and #create and views decks/new, decks/show, decks/_form
+ - form for making a new card
+ DONE - create user (not from API)
+ - 
 
 
 MODELS
