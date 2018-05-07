@@ -10,6 +10,8 @@ class DecksController < ApplicationController
     end
 
     @deck = Deck.find(params[:id])
+
+    session[:deck_id] = @deck.id
   end
 
   def new
@@ -17,5 +19,5 @@ class DecksController < ApplicationController
 
   def create
   end
-  
+
 end

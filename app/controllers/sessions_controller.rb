@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:email]          #need to redirect if email they entered is not present in database
-      if User.find_by(:email => params[:email])
-         @user = User.find_by(:email => params[:email])
+    if params[:name]          #need to redirect if email they entered is not present in database
+      if User.find_by(:name => params[:name])
+         @user = User.find_by(:name => params[:name])
        else
          redirect_to 'sessions/new'
        end

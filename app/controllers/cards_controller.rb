@@ -1,12 +1,16 @@
 class CardsController < ApplicationController
   def new
-    @deck = Deck.find(params[:deck_id])
-#deck_id isn't in the params. how am I going to make this deck work(and do I even need it in the first place?)
-
+    @user = current_user
+    @deck = Deck.find(session[:deck_id])
+    @card = @deck.cards.build
   end
 
   def create
-    @card = Card.create(card_params)
+    @deck = Deck.find(session[:deck_id])
+    @card = @deck.cards.build(:name = params[:name], :quantity = params[:quantity])
+    if @deck.save
+      redirect_to user_path(current_user)
+    end
   end
 
   def destroy
