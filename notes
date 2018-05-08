@@ -1,6 +1,7 @@
-- form for making a new deck
-  - when you click it, it doesn't give you a place to enter the name, maybe make a form to render on the user_path page rather than link_to the url for it and when you add the name and click "create deck" it instantiates a deck with the name given, then goes to the add card link. other option is to put a 'mass build' form for cards into the new_deck_path page
-  - need deck_controller #new and #create and views decks/new, decks/show, decks/_form
+-
+##
+
+- need to add the error messages to 'decks/show', 'users/new', 'login', 'cards/new' view files
 ##
 
 - routes and hidden field forms for decks/:id/edit and decks/cards/id:/edit
@@ -12,10 +13,15 @@
 - Set up BOOTSTRAP and start working on layout/styling
 ##
 
+*** use a scraper to set the :cards table? if so, can it make the seed file for me? ***
 
 
-
-DONE - form for making a new card
+#################################### DONE BELOW THIS LINE
+- form for making a new deck
+  - when you click it, it doesn't give you a place to enter the name, maybe make a form to render on the user_path page rather than link_to the url for it and when you add the name and click "create deck" it instantiates a deck with the name given, then goes to the add card link. other option is to put a 'mass build' form for cards into the new_deck_path page
+  - need deck_controller #new and #create and views decks/new, decks/show, decks/_form
+##
+- form for making a new card
   form_for :card
   f.label :name
   f.text_field :name
@@ -25,11 +31,7 @@ DONE - form for making a new card
   <%= render '/cards/new' %>
 ##
 
-DONE - create user (not from API)
-
-*** use a scraper to set the :cards table? if so, can it make the seed file for me? ***
-
-
+- create user (not from API)
 
 MODELS
   User
