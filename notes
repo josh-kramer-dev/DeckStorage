@@ -8,6 +8,10 @@
 ##
 
 - need to make a button to destroy a card and have it in the iteration that displays the deck (I think it's in 'decks/show') same on the user_path page for deleting whole decks
+
+
+<%= f.button :submit, class: "btn-primary"%>
+<%= link_to "Delete", f.object, class: 'btn btn-default', data: {method: 'DELETE'}%>
 ##
 
 - Set up BOOTSTRAP and start working on layout/styling

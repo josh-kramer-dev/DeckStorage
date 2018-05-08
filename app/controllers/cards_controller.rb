@@ -2,15 +2,12 @@ class CardsController < ApplicationController
 
   def new
     @user = current_user
-
     @deck = Deck.find(session[:deck_id])
-
     @card = @deck.cards.build
   end
 
   def create
     @deck = Deck.find(session[:deck_id])
-
     @card = @deck.cards.build(:name => params[:card][:name], :quantity => params[:card][:quantity])
 
     if @deck.save
@@ -19,7 +16,12 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    #create a hidden field form to delete (will need to put a button onto the /decks/show.html.erb)
+    @deck = Deck.find(session[:deck_id])
+#need to somehow get the card_id when you click the delete button
+    # @card = Card.find(params[:id])
+    # @card.delete
+
+    redirect_to user_deck_path(current_user, @deck)
   end
 
 private

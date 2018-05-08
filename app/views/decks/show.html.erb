@@ -5,6 +5,7 @@
 <ol>
     <label>Name: <%= card.name %>  </label><br>
     <label>Quantity: <%= card.quantity %> </label>
+    <%= link_to("delete", card_path, method: :delete, class: "delete_button") %>
 </ol>
 <% end %>
 

@@ -10,7 +10,6 @@ class DecksController < ApplicationController
     end
 
     @deck = Deck.find(params[:id])
-
     session[:deck_id] = @deck.id
   end
 
@@ -20,14 +19,24 @@ class DecksController < ApplicationController
   end
 
   def create
-
     @deck = current_user.decks.build(:name => params[:name])
 
     if @deck.save
       redirect_to user_deck_path(current_user, @deck)
     end
+  end
 
-    ##need to put the redirect in for errors if the deck doesn't save ##
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @deck = Deck.find(session[:deck_id])
+    @deck.delete
+
+    redirect_to user_path(current_user)
   end
 
   private

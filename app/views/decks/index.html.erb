@@ -3,5 +3,6 @@
 <% @user.decks.each do |deck| %>
 <ol>
   <%= link_to "#{deck.name}", user_deck_path(@user, deck)%>
+  <%= link_to("delete", user_deck_path(@user, deck), method: :delete, class: "delete_button") %>
 </ol>
 <% end %>
