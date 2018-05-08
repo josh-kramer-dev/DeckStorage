@@ -11,10 +11,10 @@ class CardsController < ApplicationController
   def create
     @deck = Deck.find(session[:deck_id])
 
-    @card = @deck.cards.build(:name => params[:name], :quantity => params[:quantity])
+    @card = @deck.cards.build(:name => params[:card][:name], :quantity => params[:card][:quantity])
 
     if @deck.save
-      redirect_to user_path(current_user)
+      redirect_to user_deck_path(current_user, @deck)
     end
   end
 

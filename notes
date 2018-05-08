@@ -1,16 +1,25 @@
 - form for making a new deck
   - need deck_controller #new and #create and views decks/new, decks/show, decks/_form
-- form for making a new card
+##
+
+- need to make a button to destroy a card and have it in the iteration that displays the deck (I think it's in 'decks/show') same on the user_path page for deleting whole decks
+##
+
+- Set up BOOTSTRAP and start working on layout/styling
+##
+
+
+
+
+DONE - form for making a new card
   form_for :card
   f.label :name
   f.text_field :name
   f.label :quantity
   f.text_field :quantity
   end
-
   <%= render '/cards/new' %>
-
-Set up BOOTSTRAP and start working on layout/styling
+##
 
 DONE - create user (not from API)
 
