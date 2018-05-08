@@ -1,9 +1,11 @@
 <h4> Here is the decklist. You will see the cards and their quantity. Want to be able to create new cards to add to this deck, edit the cards, and delete cards from this deck. </h4>
-<%= render :template => '/decks/new' %>
+
 
 <% @deck.cards.each do |card| %>  <!-- put this into a table -->
-<li>
+<ol>
     <label>Name: <%= card.name %>  </label><br>
     <label>Quantity: <%= card.quantity %> </label>
-</li>
+</ol>
 <% end %>
+
+<%= button_to "Add Card", '/decks/cards/new' %>

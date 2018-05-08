@@ -1,0 +1,5 @@
+<%= form_tag('/users/:user_id/decks', method: :post) do %>
+<%= label_tag(:name, "Deck Name") %>
+<%= text_field_tag(:name) %>
+<%= submit_tag("create deck") %>
+<% end %>
