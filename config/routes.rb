@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :cards
   end
 
+  post '/decks/cards/new', to: 'cards#new'
+
   root 'welcome#home'
 
   get '/login', to: 'sessions#new', as: 'login'

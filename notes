@@ -10,6 +10,7 @@
 
   <%= render '/cards/new' %>
 
+Set up BOOTSTRAP and start working on layout/styling
 
 DONE - create user (not from API)
 
