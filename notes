@@ -1,5 +1,9 @@
 - form for making a new deck
+  - when you click it, it doesn't give you a place to enter the name, maybe make a form to render on the user_path page rather than link_to the url for it and when you add the name and click "create deck" it instantiates a deck with the name given, then goes to the add card link. other option is to put a 'mass build' form for cards into the new_deck_path page
   - need deck_controller #new and #create and views decks/new, decks/show, decks/_form
+##
+
+- routes and hidden field forms for decks/:id/edit and decks/cards/id:/edit
 ##
 
 - need to make a button to destroy a card and have it in the iteration that displays the deck (I think it's in 'decks/show') same on the user_path page for deleting whole decks
