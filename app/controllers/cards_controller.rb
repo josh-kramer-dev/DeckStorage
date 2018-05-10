@@ -17,9 +17,9 @@ class CardsController < ApplicationController
 
   def destroy
     @deck = Deck.find(session[:deck_id])
-#need to somehow get the card_id when you click the delete button
-    # @card = Card.find(params[:id])
-    # @card.delete
+    card = Card.find(session[:card_id])
+    card.delete
+    delete_card
 
     redirect_to user_deck_path(current_user, @deck)
   end
@@ -27,5 +27,9 @@ class CardsController < ApplicationController
 private
   def card_params
     params.require(:cards).permit(:name, :quantity, :deck_id)
+  end
+
+  def delete_card
+    session[:card_id] = nil
   end
 end
