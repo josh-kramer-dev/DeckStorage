@@ -1,8 +1,21 @@
+<div class="decks">
+  <div class="container">
+    <h3 class="text-center">Here are your decks.</h3>
+    <div class="row">
+      <div class="col-md-4 col-lg-4 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <% @user.decks.each do |deck| %>
+            <h3 class="card-title">
+                <strong> <%= link_to "#{deck.name}", user_deck_path(@user, deck)%>
+                </h3>
 
-<h3>Here are your decks. Want to be able to click on their link to go to their page. also want to be able to delete them from here with a button </h3>
-<% @user.decks.each do |deck| %>
-<ol>
-  <%= link_to "#{deck.name}", user_deck_path(@user, deck)%>
-  <%= link_to("delete", user_deck_path(@user, deck), method: :delete, class: "delete_button") %>
-</ol>
-<% end %>
+            <p class="card-text"><%= link_to("x", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %>
+            </p>
+            <br>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -33,7 +33,7 @@ class DecksController < ApplicationController
   end
 
   def destroy
-    @deck = Deck.find(session[:deck_id])
+    @deck = Deck.find(params[:deck_id])
     @deck.delete
 
     redirect_to user_path(current_user)

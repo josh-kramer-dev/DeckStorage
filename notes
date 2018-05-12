@@ -1,4 +1,8 @@
--
+-for delete, need to link to the right deck or card instead of just the last one in the list. maybe make a delete partial that only shows the button, and will get the deck/card info passed to it? how would that work?
+<!-- <% session[:card_id]= card.id %> this is only going to delete the last one every time -->
+
+<!-- % session[:deck_id] = deck.id %> this is only going to delete the last one every time -->
+
 ##
 
 - need to add the error messages to 'decks/show', 'users/new', 'login', 'cards/new' view files

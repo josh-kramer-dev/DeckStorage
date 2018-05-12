@@ -1,13 +1,21 @@
-<h4> Here is the decklist. You will see the cards and their quantity. Want to be able to create new cards to add to this deck, edit the cards, and delete cards from this deck. </h4>
-
-
-<% @deck.cards.each do |card| %>  <!-- put this into a table -->
-<ol>
-    <label>Name: <%= card.name %>  </label><br>
-    <label>Quantity: <%= card.quantity %> </label>
-    <% session[:card_id]= card.id %>
-    <%= link_to("delete", card_path, method: :delete, class: "delete_button") %>
-</ol>
-<% end %>
+<div class="cards">
+  <div class="container">
+    <h2 class="text-center"> <%= @deck.name%> </h2>
+    <div class="row">
+      <div class="col-md-4 col-lg-4 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <% @deck.cards.each do |card| %>
+              <h3 class="Card-title">
+                <strong> <%= card.name %></strong> <br>Quantity: <%= card.quantity %> </h3>
+                <%= hidden_field_tag "card_id", card.id %>
+            <p class="card-text"> <%= link_to("delete", card_path, method: :delete, class: "btn btn-danger") %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= button_to "Add Card", '/decks/cards/new' %>
