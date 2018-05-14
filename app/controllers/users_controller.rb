@@ -7,7 +7,12 @@ class UsersController < ApplicationController
 
   def show
     @deck = Deck.new
-    @user = User.find(params[:id])
+    if !User.find(params[:id])
+      redirect_to root_path
+    else
+      @user = User.find(params[:id])
+
+    end
 
     if @user != current_user
       redirect_to user_path(current_user)

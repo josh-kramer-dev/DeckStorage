@@ -1,22 +1,20 @@
+<h2 class="text-center"> <%= @deck.name%> </h2>
 <div class="cards">
   <div class="container">
-    <h2 class="text-center"> <%= @deck.name%> </h2>
+  <% @deck.cards.each do |card| %>
     <div class="row">
-      <div class="col-md-4 col-lg-4 col-sm-12">
+      <div class="col-md-12 col-lg-12 col-sm-12">
         <div class="card">
-            <% @deck.cards.each do |card| %>
-              <h3 class="Card-title"></h3>
-                <strong> <%= card.name %></strong>
-                <p class="card-text">Quantity: <%= card.quantity %> </p>
-                <div class="card-body">
-                  <% @card = card %>
-                  <%= link_to("delete", card_path(@card), method: :delete, class: "btn btn-danger") %>
-                </div>
-              <% end %>
+          <h3 class="card-title"><%= card.name %></h3>
+            <p class="card-text">Quantity: <%= card.quantity %> </p>
+          <div class="card-body">
+          <% @card = card %>
+          <%= link_to("x", card_path(@card), method: :delete, class: "btn btn-danger") %>
+          </div>
+        <% end %>
         </div>
       </div>
     </div>
+    <%= button_to "Add Card", '/decks/cards/new' %>
   </div>
 </div>
-
-<%= button_to "Add Card", '/decks/cards/new' %>
