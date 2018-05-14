@@ -16,21 +16,20 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @deck = Deck.find(params[:id])
-    card = Card.find(params[:card_id])
+    # byebug
+# raise params.inspect
 
-    # card.delete
-    delete_card
+    card = Card.find(params[:id])
+    @deck = Deck.find(card.deck_id)
+
+    card.delete
 
     redirect_to user_deck_path(current_user, @deck)
   end
 
 private
-  # def card_params
-  #   params.require(:cards).permit(:name, :quantity, :deck_id, :card_id, :id)
-  # end
-  #
-  # def delete_card
-  #   session[:card_id] = nil
-  # end
+  def card_params
+    params.require(:cards).permit(:id, :name, :quantity, :deck_id)
+  end
+
 end
