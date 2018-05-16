@@ -16,9 +16,6 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    # byebug
-# raise params.inspect
-
     card = Card.find(params[:id])
     @deck = Deck.find(card.deck_id)
 

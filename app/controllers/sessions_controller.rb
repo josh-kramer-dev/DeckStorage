@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:name]          #need to redirect if email they entered is not present in database
+    if params[:name]
       if User.find_by(:name => params[:name])
          @user = User.find_by(:name => params[:name])
        else
@@ -20,11 +20,13 @@ class SessionsController < ApplicationController
         end
     end
 
-    @user.save
-
-    session[:user_id] = @user.id
-
-    redirect_to user_path(@user)
+    # if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    # else
+    #   render :new
+    # end
   end
 
   def destroy

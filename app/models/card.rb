@@ -3,4 +3,9 @@ class Card < ApplicationRecord
 
   validates :name, presence: true
   validates :quantity, presence: true
+
+  # scope :playset, -> {where(quantity: '4') }
+
+
+
 end

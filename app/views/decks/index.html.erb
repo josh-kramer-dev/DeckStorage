@@ -3,14 +3,14 @@
 <div class="decks">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 col-lg-12 col-sm-12">
-        <div class="card">
-          <% @user.decks.each do |deck| %>
+      <% @user.decks.each do |deck| %>
+      <div class="col-md-4 col-lg-4 col-sm-12">
+          <div class="card">
             <h3 class="card-title"><%= link_to "#{deck.name}", user_deck_path(@user, deck)%></h3>
-            <p class="card-text"><%= link_to("x", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %></p>
-          <% end %>
-        </div>
+            <p class="card-footer"><%= link_to("x", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %></p>
+          </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

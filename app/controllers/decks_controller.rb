@@ -2,6 +2,7 @@ class DecksController < ApplicationController
 
   def index
     @user = User.find_by(params[:user_id])
+    @deck = Deck.new
   end
 
   def show

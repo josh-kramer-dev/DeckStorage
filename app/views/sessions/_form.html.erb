@@ -1,8 +1,23 @@
 <%= form_tag('/session', method: :post) do %>
-<%= label_tag(:name, "Enter your username") %>
-<%= text_field_tag(:name) %>
+  <% if @user.errors.any? %>
+    <div id="error_explanations">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="field<%= ' field_with_errors' if @user.errors[:name].any? %>">
+    <%= label_tag(:name, "Enter your username") %>
+    <%= text_field_tag(:name) %>
+  </div>
 <br>
-<%= label_tag(:password, "Enter your password") %>
-<%= password_field_tag(:password) %>
-<%= submit_tag("Login") %>
+  <div class="field<%= ' field_with_errors' if @user.errors[:password].any? %>">
+    <%= label_tag(:password, "Enter your password") %>
+    <%= password_field_tag(:password) %>
+  </div>
+  <%= submit_tag("Login") %>
 <% end %>
