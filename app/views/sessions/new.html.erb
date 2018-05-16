@@ -1,1 +1,15 @@
+<%= form_tag('/session', method: :post) do %>
+  <% if @user.errors.any? %>
+    <div id="error_explanations">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+
+
 <%= render 'form' %>
