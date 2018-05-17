@@ -6,16 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # byebug
-
-
     if params[:name]
-      if params[:name].empty?
-        @user = User.new
-        render :new
-      else
-    	   @user = User.find_by(:name => params[:name])
-      end
+      @user = User.find_by(:name => params[:name])
     else
       @user = User.find_or_create_by(uid: auth['uid']) do |u|
         u.name = auth['info']['name']
@@ -24,37 +16,13 @@ class SessionsController < ApplicationController
       end
     end
 
-    if @user.save
-    	session[:user_id] = @user.id
-    	redirect_to user_path(@user)
+    # if @user.nil? || !@user.valid?      can't get the error messages to work - very frustrating!
+    #   render :new
     # else
-    # 	render :new
-    end
-
-    # @user = User.new
-    # if params[:name].empty?
-    #  render :new
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
     # end
-
-    # if
-      # @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      #   u.name = auth['info']['name']
-      #   u.email = auth['info']['email']
-      #   u.password = SecureRandom.hex(9)
-      #   end
-    # else
-    #   params[:name] && !params[:name].empty?
-    #   if User.find_by(:name => params[:name])
-    #      @user = User.find_by(:name => params[:name])
-    #    else
-    #      redirect_to 'sessions/new'
-    #    end
-    #
-    # end
-
-      # session[:user_id] = @user.id
-      # redirect_to user_path(@user)
-
   end
 
   def destroy

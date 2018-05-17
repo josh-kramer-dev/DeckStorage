@@ -1,11 +1,11 @@
 <%= form_tag('/session', method: :post) do %>
 
-  <div class="field<%= ' field_with_errors' if @user.errors[:name].any? %>">
+  <div class="field<%= 'field_with_errors' if @user.errors[:name].any? %>">
     <%= label_tag(:name, "Enter your username") %>
     <%= text_field_tag(:name) %>
   </div>
 <br>
-  <div class="field<%= ' field_with_errors' if @user.errors[:password].any? %>">
+  <div class="field<%= 'field_with_errors' if @user.errors[:password].any? %>">
     <%= label_tag(:password, "Enter your password") %>
     <%= password_field_tag(:password) %>
   </div>
