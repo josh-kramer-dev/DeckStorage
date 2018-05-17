@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :verify_user_is_authenticated
   helper_method :current_user
-  after_action -> { flash.discard }, if: -> { request.xhr? }
 
 
   private

@@ -7,9 +7,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:name]
+    if params[:name] #if the login button is clicked, use the regular login process
       @user = User.find_by(:name => params[:name])
-    # byebug
       if !user_has_errors(@user) && !@user.nil?
         @user.save
         session[:user_id] = @user.id
@@ -20,7 +19,7 @@ class SessionsController < ApplicationController
         render :new
       end
     else
-      @user = User.find_or_create_by_facebook(auth_hash)
+      @user = User.find_or_create_by_facebook(auth_hash) # login via facebook API
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     end
