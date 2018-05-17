@@ -10,16 +10,18 @@
   </head>
 
   <body>
-    <% if !current_user %>
-      <%= link_to "Sign Up", new_user_path %>
-      <%= link_to "Log In", login_path %>
-      <%= link_to "Facebook Log In", '/auth/facebook' %>
-      <% end %>
-    <% if current_user %>
-      <%= link_to "#{current_user.name}'s profile", user_path(current_user) %>
-      <%= link_to "Log Out", logout_path, method:'delete' %>
-      <% end %>
+    <div class="container">
+      <div class="top">
+        <%= render partial: "layouts/header" %>
+        <%= render partial: "layouts/navigation_links" %>
+      </div>
 
-    <%= yield %>
+      <div class="content">
+        <%= render partial: "layouts/errors" %>
+        <%= yield %>
+      </div>
+
+      <footer><%= render partial: "layouts/profile_links" %></footer>
+    </div>
   </body>
 </html>

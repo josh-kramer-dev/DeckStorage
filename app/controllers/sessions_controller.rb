@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :verify_user_is_authenticated, only: [:new,:create]
+  helper_method :user_has_errors
 
   def new
     @user = User.new
@@ -8,21 +9,21 @@ class SessionsController < ApplicationController
   def create
     if params[:name]
       @user = User.find_by(:name => params[:name])
-    else
-      @user = User.find_or_create_by(uid: auth['uid']) do |u|
-        u.name = auth['info']['name']
-        u.email = auth['info']['email']
-        u.password = SecureRandom.hex(9)
+    # byebug
+      if !user_has_errors(@user) && !@user.nil?
+        @user.save
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        flash.now[:alert] = "Invalid username or password"
+        @user = User.new
+        render :new
       end
-    end
-
-    # if @user.nil? || !@user.valid?      can't get the error messages to work - very frustrating!
-    #   render :new
-    # else
-      @user.save
+    else
+      @user = User.find_or_create_by_facebook(auth_hash)
       session[:user_id] = @user.id
       redirect_to user_path(@user)
-    # end
+    end
   end
 
   def destroy
@@ -32,8 +33,14 @@ class SessionsController < ApplicationController
 
   private
 
-  def auth
+  def auth_hash
     request.env['omniauth.auth']
+  end
+
+  def user_has_errors(user)
+    if !user.nil? && user.valid?
+      return user.errors.any?
+    end
   end
 
 end

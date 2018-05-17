@@ -1,3 +1,16 @@
+- need to get some images for the landing page, and users#show, and decks#show 
+
+
+- application.html.erb side bar code => put the create a new deck there?
+<div class="sidebar">
+  <% if current_user %>
+    <%= render partial: "layouts/navigation_images" %>
+  <% else %>
+    <%= render partial: "layouts/placeholder_images" %>
+  <% end %>
+</div>
+
+
 - need to add the error messages to 'decks/show', 'users/new', 'login', 'cards/new' view files
 ##
 
