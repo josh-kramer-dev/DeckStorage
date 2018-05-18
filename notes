@@ -1,4 +1,5 @@
-- need to get some images for the landing page, and users#show, and decks#show 
+- need to get some images for the landing page, and users#show, and decks#show
+need to get the footer to be locked below the image
 
 
 - application.html.erb side bar code => put the create a new deck there?

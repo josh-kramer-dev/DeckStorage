@@ -11,7 +11,7 @@
 
   <body>
     <div class="container">
-      <div class="top">
+      <div class="header">
         <%= render partial: "layouts/header" %>
         <%= render partial: "layouts/navigation_links" %>
       </div>
@@ -21,7 +21,9 @@
         <%= yield %>
       </div>
 
-      <footer><%= render partial: "layouts/profile_links" %></footer>
+      <div id="footer"><%= render partial: "layouts/profile_links" %>
+      </div>
     </div>
+
   </body>
 </html>
