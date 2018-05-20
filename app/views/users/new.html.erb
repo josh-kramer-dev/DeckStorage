@@ -13,31 +13,25 @@
       </ul>
    </div>
  <% end %>
- <div class="container">
-   <div class="row">
-     <div class="col-md-4 col-lg-4 col-sm-12"
-     <div class="field">
-       <%= f.label :name, "Username" %>
-       <%= f.text_field :name %>
-     </div>
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-md-4 col-lg-4 col-sm-12"
-     <div class="field">
-      <%= f.label :email %><br>
-      <%= f.text_field :email %>
-    </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4 col-lg-4 col-sm-12"
-      <div class="field">
-        <%= f.label :password %><br>
-        <%= f.password_field :password %>
-      </div>
-      </div>
-    </div>
+
+ <div class="form-group">
+   <label for="name">Username</label>
+   <input type="name" class="form-control" id="name" name="user[name]" placeholder="Enter username">
+ </div>
+
+ <div class="form-group">
+   <label for="email">Email address</label>
+   <input type="email" class="form-control" id="email" name="user[email] aria-describedby="emailHelp" placeholder="Enter email">
+   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else."</small>
+ </div>
+
+ <div class="form-group">
+   <label for="password">Password</label>
+   <input type="password" class="form-control" id="password" name="user[password]" placeholder="Password">
+   <small id="passwordHelp" class="form-text text-muted">Must be between 6-20 characters long.</small>
+
+ </div>
+
   <div class="actions">
     <%= f.submit "Create my account" %>
   </div>

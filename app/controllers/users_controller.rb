@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       @user = User.find(params[:id])
-
     end
 
     if @user != current_user
@@ -20,6 +19,9 @@ class UsersController < ApplicationController
   end
 
   def create
+
+    # raise params.inspect
+
         @user = User.new
         @user.name = params[:user][:name]
         @user.email = params[:user][:email]

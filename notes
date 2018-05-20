@@ -1,4 +1,24 @@
-- login page => 'login' button aligned with rest of form; put some padding on top of the login forms; align footer with rest of content; background color (should choose for entire site -- need a theme); 
+users#new old code that worked but wasn't pretty.
+   <div class="row">
+     <div class="col-md-4 col-lg-4 col-sm-12"
+     <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-lg-4 col-sm-12"
+      <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </div>
+      </div>
+    </div>
+
+
+
+- login page => 'login' button aligned with rest of form; put some padding on top of the login forms; align footer with rest of content; background color (should choose for entire site -- need a theme);
 
 
 
