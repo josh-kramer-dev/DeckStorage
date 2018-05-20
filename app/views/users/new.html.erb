@@ -1,5 +1,5 @@
 <h1>Sign up</h1>
-
+<br>
 <%= form_for(@user)  do |f| %>
 
   <% if @user.errors.any? %>
@@ -29,7 +29,6 @@
    <label for="password">Password</label>
    <input type="password" class="form-control" id="password" name="user[password]" placeholder="Password">
    <small id="passwordHelp" class="form-text text-muted">Must be between 6-20 characters long.</small>
-
  </div>
 
   <div class="actions">

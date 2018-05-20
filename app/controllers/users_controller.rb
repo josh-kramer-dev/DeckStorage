@@ -20,8 +20,6 @@ class UsersController < ApplicationController
 
   def create
 
-    # raise params.inspect
-
         @user = User.new
         @user.name = params[:user][:name]
         @user.email = params[:user][:email]
