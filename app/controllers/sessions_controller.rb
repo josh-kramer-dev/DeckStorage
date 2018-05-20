@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     if params[:name] #if the login button is clicked, use the regular login process
-      @user = User.find_by(:name => params[:name])
+      @user = User.find_by(:name => params[:user][:name])
       if !user_has_errors(@user) && !@user.nil?
         @user.save
         session[:user_id] = @user.id

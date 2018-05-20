@@ -2,12 +2,12 @@
 
 <div class="form-group">
   <label for="name">Username</label>
-  <input type="name" class="form-control" id="name" name="name" placeholder="Enter username">
+  <input type="name" class="form-control" id="name" name="user[name]" placeholder="Enter username">
 </div>
 
 <div class="form-group">
   <label for="password">Password</label>
-  <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+  <input type="password" class="form-control" id="password" name="user[password]" placeholder="Password">
   <small id="passwordHelp" class="form-text text-muted">Must be between 6-20 characters long.</small>
 </div>
   <%= submit_tag("Login") %>
