@@ -2,10 +2,9 @@ decks#index on users#show ---
   1. need to add edit to my deck list
   2. maybe go back to having each deck use the bootstrap class="card" for the decks. this way you can incorporate their card and deck back images from imgur links
 
-
 line 24 of decks#show --- make a form that posts to cards#create instead of using a button to go to a new page to add a card
 
-
+for image, maybe add a column to the cards table for it's image url, where you paste the url of the picture in the seed file
 
 #################################### DONE BELOW THIS LINE
 
