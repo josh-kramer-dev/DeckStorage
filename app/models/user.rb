@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :decks
   has_many :cards, through: :decks
+  has_many :formats, through: :decks
 
   validates :name, presence: true
   validates :name, uniqueness: true

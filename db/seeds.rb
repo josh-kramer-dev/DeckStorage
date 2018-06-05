@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users = User.create([{name: 'josh', email: 'josh@email.com', password: 'password'}, {name: 'mike', email: 'mike@email.com', password: 'password'}])
-Deck.create(name: "Grixis Control", user: User.find_by(:name => "josh"))
+formats = Format.create([{name: 'standard'}, {name: 'modern'}, {name: 'commander'}, {name: 'legacy'}, {name: 'brawl'}])
+Deck.create(name: "Grixis Control", user: User.find_by(:name => "josh"), format: Format.find_by(:name => "standard"))
 Card.create(name: "The Scarab God", quantity: "1", deck: users.first.decks.first)
 Card.create(name: "Torrential Gearhulk", quantity: "3", deck: users.first.decks.first)
 Card.create(name: "Chandra, Torch of Defiance", quantity: "2", deck: users.first.decks.first)
@@ -36,19 +37,19 @@ Card.create(name: "Sulfur Falls", quantity: "2", deck: users.first.decks.first)
 Card.create(name: "Swamp", quantity: "1", deck: users.first.decks.first)
 
 
-Deck.create(name: "Mono-Green", user: User.find_by(:name => "josh"))
+Deck.create(name: "Mono-Green", user: User.find_by(:name => "josh"), format: Format.find_by(:name => "standard"))
 Card.create(name: "jadelight ranger", quantity: "4", deck: users.first.decks.last)
 Card.create(name: "blossoming defense", quantity: "4", deck: users.first.decks.last)
 Card.create(name: "ghalta", quantity: "2", deck: users.first.decks.last)
 Card.create(name: "rhonas' monument", quantity: "4", deck: users.first.decks.last)
 
-Deck.create(name: "Mono-Red", user: User.find_by(:name => "mike"))
+Deck.create(name: "Mono-Red", user: User.find_by(:name => "mike"), format: Format.find_by(:name => "standard"))
 Card.create(name: "lightning strike", quantity: "4", deck: users.last.decks.first)
 Card.create(name: "glorybringer", quantity: "3", deck: users.last.decks.first)
 Card.create(name: "shock", quantity: "2", deck: users.last.decks.first)
 Card.create(name: "soul-scar mage", quantity: "4", deck: users.last.decks.first)
 
-Deck.create(name: "Burn", user: User.find_by(:name => "mike"))
+Deck.create(name: "Burn", user: User.find_by(:name => "mike"), format: Format.find_by(:name => "modern"))
 Card.create(name: "lightning bolt", quantity: "4", deck: users.last.decks.last)
 Card.create(name: "boros charm", quantity: "4", deck: users.last.decks.last)
 Card.create(name: "lava spike", quantity: "4", deck: users.last.decks.last)
