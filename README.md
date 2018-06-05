@@ -1,7 +1,6 @@
-# README
 DeckStorage v.1.0
 
-Application description: This is a database for your Magic the Gathering decks.
+Application description: This is a storage solution for your Magic the Gathering decks. It allows you to create and delete decks, and to easily add or remove cards from the individual decks so that you always know what you are bringing to your next FNM or PPTQ. You can also filter your deck results by format to know what is in your arsenal the next time you want to play a specific event/format.
 
 Installation guide:
 
