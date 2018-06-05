@@ -8,5 +8,4 @@ class Deck < ApplicationRecord
 
   scope :filter_by_format, ->(format_id) { where("format_id == ?", format_id) }
 
-
 end
