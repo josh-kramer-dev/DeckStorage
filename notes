@@ -1,9 +1,21 @@
 Implement filter_by_format on decks#index so that only the ones from the chosen format are displayed.
-  - add a drop down for the formats available, then when they select one, filter based on the format_id for that selection -> need to pass the format.id to the scope method, not the format.name
+  - add a select box for the formats available, then when they select one, filter based on the format_id for that selection -> need to pass the format.id to the scope method, not the format.name
 
+  ### from the plants#new page, would be used for the drop downs I think (need to research the options_for_select documentation)
+  <!-- LIGHT -->
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <p class="bold">Light requirements:<br>
+          <%= f.select :light, options_for_select([['Select one', ''], 'Full sun', 'Part sun', 'Shade'], selected: f.object.light), {}, class: "form-control" %><br>
+      </div>
+    </div>
 
+### from the plants index page, which would be my decks#index, which is rendered in users#show
 
-
+    <p>
+    <%= select_tag "season", options_from_collection_for_select(@seasons, "id", "season"), prompt: "All seasons", class: 'btn' %>
+    <%= submit_tag "Filter", class: 'btn' %>
+    </p>
 
 
 
