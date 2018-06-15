@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..20 }
 
   def self.find_or_create_by_facebook(auth_hash)
-    self.where(:uid => auth_hash['info']['uid']).first_or_create do |u|
+    user = User.find_or_create_by(:uid => auth_hash['uid']) do |u|
       u.name = auth_hash['info']['name']
       u.email = auth_hash['info']['email']
       u.password = SecureRandom.hex(9)
