@@ -13,4 +13,4 @@ end
 
 ### use the filter_by_format when you click on the name of the format in the table from decks#index
 
-### this will send you to 
+### this will send you to

@@ -4,3 +4,19 @@
 
 <h4>Add a Deck </h4>
 <%= render :template => '/decks/new' %>
+<br>
+
+<fieldset>
+  <legend>Select A Format</legend>
+
+  <div class="form-group">
+    <select class="custom-select">
+      <option selected="">Formats</option>
+      <option value="1">Standard</option>
+      <option value="2">Modern</option>
+      <option value="3">Commander</option>
+    </select>
+  </div>
+
+</fieldset>
+<!--  collection_check_boxes(:deck, :format_ids, Format.all, :id)  -->
