@@ -4,6 +4,10 @@ has_scope :filter_by_format
   def index
     @user = User.find_by(params[:user_id])
     @deck = Deck.new
+
+    if params[:format_id]
+      @decks = @user.decks.where(:format_id => params[:format_id])
+    end 
   end
 
   def show

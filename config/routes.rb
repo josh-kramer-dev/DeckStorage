@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :decks
+    resources :formats
   end
 
   scope :decks do
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   post '/session', to: 'sessions#create', as: 'session'
   delete '/session/', to: 'sessions#destroy', as: 'logout'
 
+
+
   get '/auth/facebook/callback' => 'sessions#create'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
