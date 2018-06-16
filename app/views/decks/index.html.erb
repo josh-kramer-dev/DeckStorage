@@ -20,3 +20,7 @@
   </tr>
   </tbody>
 </table>
+
+<% form_for(@user) do |f| %>
+<%= f.select :formats, Format.all.collect { |format| [format.name, format.id] } %>
+<% end %>
