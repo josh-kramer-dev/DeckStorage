@@ -15,10 +15,12 @@
     <% @user.decks.each do |deck| %>
     <tr class="table-light">
       <th scope="row"><%= link_to "#{deck.name}", user_deck_path(@user, deck)%></th>
-      <td> <%= link_to "#{deck.format.name}", user_deck_path(@user, deck) %></td> 
+      <td> <%= link_to "#{deck.format.name}", user_deck_path(@user, deck) %></td>
       <td> <%= link_to("", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %> </td>
 
     <% end %>
   </tr>
   </tbody>
 </table>
+
+<%= link_to 'filtered_format', {controller: 'decks', action: 'index', :id => 'format_id'} %>

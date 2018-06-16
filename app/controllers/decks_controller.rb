@@ -1,4 +1,5 @@
 class DecksController < ApplicationController
+has_scope :filter_by_format
 
   def index
     @user = User.find_by(params[:user_id])
