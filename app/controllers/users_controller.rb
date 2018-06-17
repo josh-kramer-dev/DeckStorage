@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @deck = Deck.new
     if !User.find(params[:id])
       redirect_to root_path
     else
@@ -16,6 +15,10 @@ class UsersController < ApplicationController
     if @user != current_user
       redirect_to user_path(current_user)
     end
+
+    @deck = Deck.new
+    @decks = @user.decks
+    @formats = Format.all
   end
 
   def create
