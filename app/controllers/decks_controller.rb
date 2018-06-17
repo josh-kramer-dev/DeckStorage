@@ -24,7 +24,7 @@ class DecksController < ApplicationController
   end
 
   def create
-    @deck = current_user.decks.build(:name => params[:name])
+    @deck = current_user.decks.build(:name => params[:name], :format_id => params[:format_id])
 
     if @deck.save
       redirect_to user_deck_path(current_user, @deck)
