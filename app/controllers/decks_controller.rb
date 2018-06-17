@@ -3,11 +3,13 @@ has_scope :filter_by_format
 
   def index
     @user = User.find_by(params[:user_id])
+    @decks = @user.decks
     @deck = Deck.new
+# byebug
 
-    if params[:format_id]
-      @decks = @user.decks.where(:format_id => params[:format_id])
-    end 
+    # if params[:format_id]
+    #   @decks = @decks.filter_by_format(params[:format_id])
+    # end
   end
 
   def show
