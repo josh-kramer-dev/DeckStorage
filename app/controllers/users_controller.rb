@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     @deck = Deck.new
     @decks = @user.decks
     @formats = Format.all
+
+    if params[:user_most_id]
+      @user_most = params[:user_most_id]
+    end
   end
 
   def create
