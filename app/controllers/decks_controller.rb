@@ -49,4 +49,8 @@ class DecksController < ApplicationController
     params.require(:decks).permit(:name, :user_id, :deck_id)
   end
 
+  def most
+    @user_with_most_decks = params[:user_most_id]
+  end
+
 end

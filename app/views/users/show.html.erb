@@ -6,5 +6,9 @@
 <br>
 
 
+<% if params[:user_most_id] %>
 <h4> find out who has the most decks </h4>
 <%= render :template => '/users/most' %>
+<% else %>
+<%= button_to "Click to see who has the most decks" %>
+<% end %>

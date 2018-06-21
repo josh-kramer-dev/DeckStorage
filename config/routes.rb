@@ -19,6 +19,5 @@ Rails.application.routes.draw do
   delete '/session/', to: 'sessions#destroy', as: 'logout'
 
 
-
   get '/auth/facebook/callback' => 'sessions#create'
 end
