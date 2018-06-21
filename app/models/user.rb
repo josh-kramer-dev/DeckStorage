@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
 #user with the most decks, count on the deck ids
-scope :user_with_the_most_decks, -> {where{}}
+scope :user_with_the_most_decks, -> {order("decks_count desc").limit(1)}
 
 # where count(deck_id) desc limit 1
 
