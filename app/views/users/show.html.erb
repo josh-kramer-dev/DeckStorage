@@ -6,9 +6,7 @@
 <br>
 
 
-<% if params[:user_most_id] %>
-<h4> find out who has the most decks </h4>
-<%= render :template => '/users/most' %>
-<% else %>
-<%= button_to "Click to see who has the most decks" %>
-<% end %>
+<h5><%= "#{ @user_most.name } has the most decks" %>
+
+<!--  this is where I need to change the button_to POST URL from the default of /users/4 to something like /users/most_decks-->
+<!--  users/most_decks POST as :most_decks in routes-->
