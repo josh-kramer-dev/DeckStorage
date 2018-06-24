@@ -20,6 +20,4 @@ class User < ApplicationRecord
 
 scope :user_with_the_most_decks, -> {order("decks_count desc").limit(1)}
 
-
-
 end

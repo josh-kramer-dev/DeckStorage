@@ -40,7 +40,6 @@ class DecksController < ApplicationController
   def destroy
     @deck = Deck.find(params[:id])
     @deck.delete
-
     redirect_to user_path(current_user)
   end
 
@@ -48,9 +47,4 @@ class DecksController < ApplicationController
   def deck_params
     params.require(:decks).permit(:name, :user_id, :deck_id)
   end
-
-  def most
-    @user_with_most_decks = params[:user_most_id]
-  end
-
 end
