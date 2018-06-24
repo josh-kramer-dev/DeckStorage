@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @deck = Deck.new
     @decks = @user.decks
     @formats = Format.all
-    @user_most = User.user_with_the_most_decks
+    @user_most = User.user_with_the_most_decks.first
 
   end
 
