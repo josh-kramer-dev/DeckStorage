@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # User.find(params[:id]) ? @user = User.find(params[:id]) : redirect_to root_path
     if !User.find(params[:id])
       redirect_to root_path
     else
