@@ -27,6 +27,12 @@ Write a blog post about the project and process.
 
 1. on users#show replace the render template with the ajax request/display process
     a. gonna need to put my target <div class="decks-index"> here.  
+    b. make the target actually be the table that displays the deck itself 
+    <tr class="table-light"> 
+        inside of there, use handlebars to make this into a template    
+            <th scope="row"><%= link_to "#{deck.name}", user_deck_path(@user, deck)%></th>
+             <td> <%= link_to "#{deck.format.name}", user_format_path(@user, deck.format) %></td>
+             <td> <%= link_to("", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %> </td>
 
 
 2.

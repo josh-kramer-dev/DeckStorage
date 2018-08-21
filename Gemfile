@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 
 gem 'mtg_sdk'
-ruby '2.4.1'
+ruby '2.3.1'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'thin'
