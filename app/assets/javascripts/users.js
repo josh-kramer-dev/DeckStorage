@@ -1,4 +1,4 @@
 $(document).ready(function() {
-    $('tr.table-light').html("test")
+    $('tr.table-light').text("test")
   });
 
