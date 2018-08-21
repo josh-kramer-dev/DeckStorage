@@ -23,3 +23,10 @@ Submit a video of how a user would interact with your working application.
 Make sure to check each box in your spec.md (replace the space between the square braces with an x) and explain next to each one how you've met the requirement before you submit your project.
 Submit the url to your github project
 Write a blog post about the project and process.
+
+
+1. on users#show replace the render template with the ajax request/display process
+    a. gonna need to put my target <div class="decks-index"> here.  
+
+
+2.
