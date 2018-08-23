@@ -1,5 +1,5 @@
 $(function() {
-debugger
+// debugger
   $.ajax({
     type: "GET",
     url: '/decks/index',                   //'/users/' + user_id + '/decks',
