@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :cards
   end
 
+  get '/decks/index', to: 'decks#index'
   post '/decks/cards/new', to: 'cards#new'
 
   root 'welcome#home'

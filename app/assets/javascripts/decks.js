@@ -1,10 +1,10 @@
 $(function() {
-
+debugger
   $.ajax({
     type: "GET",
-    url: '/users/' + user_id + '/decks',
+    url: '/decks/index',                   //'/users/' + user_id + '/decks',
     success: function(resp){
-      $(".decks").load("<%= escape_javascript (render :partial => 'decks/index') %>")
+      $("div.decks").load("<%= escape_javascript (render :partial => 'decks/index') %>")
     }
   })
 
