@@ -1,4 +1,5 @@
 class DecksController < ApplicationController
+  before_action :set_deck, only:[:show, :edit, :update, :destroy]
 
   def index
     @user = User.find_by(params[:user_id])
@@ -7,6 +8,10 @@ class DecksController < ApplicationController
     if params[:format_id]
       @decks = @decks.filter_by_format(params[:format_id])
     end
+
+    respond_to do |format|
+      format.json { render json: @decks}
+      format.html { render :index }
   end
 
   def show
@@ -14,8 +19,11 @@ class DecksController < ApplicationController
       redirect_to user_path(current_user)
     end
 
-    @deck = Deck.find(params[:id])
     session[:deck_id] = @deck.id
+
+    respond_to do |format|
+      format.json { render json: @deck}
+      format.html { render :show }
   end
 
   def new
@@ -26,24 +34,44 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.build(:name => params[:name], :format_id => params[:format_id])
 
-    if @deck.save
-      redirect_to user_deck_path(current_user, @deck)
+      respond_to do |format|
+        if @deck.save
+          format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
+          format.json { render :show, status: :created, location: @deck }
+        else
+          format.html { render :new }
+          format.json { render json: @deck.errors, status: :unprocessable_entity }
+        end
+      end
     end
-  end
 
   def edit
   end
 
   def update
+    respond_to do |format|
+      if @deck.save
+        format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
+        format.json { render :show, status: :created, location: @deck }
+      else
+        format.html { render :new }
+        format.json { render json: @deck.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
-    @deck = Deck.find(params[:id])
-    @deck.delete
+    @deck.destroy
     redirect_to user_path(current_user)
   end
 
   private
+
+  def set_deck
+    @deck = Deck.find(params[:id])
+  end
+
+
   def deck_params
     params.require(:decks).permit(:name, :user_id, :deck_id)
   end
