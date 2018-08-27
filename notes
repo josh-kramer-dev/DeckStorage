@@ -4,6 +4,26 @@
   $("div.decks").html($decks);
   })
 
+
+This is the HTML I want to build.
+<tr class="table-light">
+      <th scope="row"><a class="load_deck" href="/users/1/decks/1">Grixis Control</a></th>
+      <td> <a href="/users/1/formats/1">standard</a></td>
+      <td> <a class="btn btn-danger" rel="nofollow" data-method="delete" href="/users/1/decks/1"></a> </td>
+    </tr>
+
+    This is the code that build this HTML. change this js and utilize js objects instead of these ruby objects to populate the fields for th and td.
+    <% @decks.each do |deck| %>
+    <tr class="table-light">
+      <th scope="row"><%= link_to "#{deck.name}", user_deck_path(@user, deck), class: "load_deck"%></th>
+      <td > <%= link_to "#{deck.format.name}", user_format_path(@user, deck.format) %></td>
+      <td> <%= link_to("", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %> </td>
+
+    <% end %>
+  </tr>
+
+
+
 2. Need to use a form to render a new resrouce without refreshing the page
   - hijack the submit action of the form already in use for decks#new 
   - loot at the ES6 Template Literals for this one 

@@ -7,6 +7,8 @@ class DecksController < ApplicationController
 
     if params[:format_id]
       @decks = @decks.filter_by_format(params[:format_id])
+    else 
+      @decks = @user.decks
     end
 
     # respond_to do |format|
