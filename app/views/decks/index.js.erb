@@ -1,14 +1,4 @@
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Deck Name</th>
-      <th scope="col">Format</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @decks.each do |deck| %>
+<% @decks.each do |deck| %>
     <tr class="table-light">
       <th scope="row"><%= link_to "#{deck.name}", user_deck_path(@user, deck), class: "load_deck"%></th>
       <td > <%= link_to "#{deck.format.name}", user_format_path(@user, deck.format) %></td>
@@ -16,5 +6,3 @@
 
     <% end %>
   </tr>
-  </tbody>
-</table>
