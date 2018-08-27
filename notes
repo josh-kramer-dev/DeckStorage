@@ -1,154 +1,32 @@
-
-  - add a select box for the formats available, then when they select one, filter based on the format_id for that selection -> need to pass the format.id to the scope method, not the format.name
-    -- added select drop down, but need to get it to submit the form and rerender the decks#index based on the filter_by_format using params[:format_id]
-
-
-
-  ### from the plants#new page, would be used for the drop downs I think (need to research the options_for_select documentation)
-  <!-- LIGHT -->
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <p class="bold">Light requirements:<br>
-          <%= f.select :light, options_for_select([['Select one', ''], 'Full sun', 'Part sun', 'Shade'], selected: f.object.light), {}, class: "form-control" %><br>
-      </div>
-    </div>
-
-### from the plants index page, which would be my decks#index, which is rendered in users#show
-
-    <p>
-    <%= select_tag "season", options_from_collection_for_select(@seasons, "id", "season"), prompt: "All seasons", class: 'btn' %>
-    <%= submit_tag "Filter", class: 'btn' %>
-    </p>
+1. I want to load(or render?) <div class="decks"> on doc load
+  $(function(){
+    var $decks = $.get("div.decks");
+  $("div.decks").html($decks);
+  })
 
 
-decks#index on users#show ---
-  1. maybe go back to having each deck use the bootstrap class="card" for the decks. this way you can incorporate their card and deck back images from imgur links
+This is the HTML I want to build.
+<tr class="table-light">
+      <th scope="row"><a class="load_deck" href="/users/1/decks/1">Grixis Control</a></th>
+      <td> <a href="/users/1/formats/1">standard</a></td>
+      <td> <a class="btn btn-danger" rel="nofollow" data-method="delete" href="/users/1/decks/1"></a> </td>
+    </tr>
 
-line 24 of decks#show --- make a form that posts to cards#create instead of using a button to go to a new page to add a card
+    This is the code that build this HTML. change this js and utilize js objects instead of these ruby objects to populate the fields for th and td.
+    <% @decks.each do |deck| %>
+    <tr class="table-light">
+      <th scope="row"><%= link_to "#{deck.name}", user_deck_path(@user, deck), class: "load_deck"%></th>
+      <td > <%= link_to "#{deck.format.name}", user_format_path(@user, deck.format) %></td>
+      <td> <%= link_to("", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %> </td>
 
-for image, maybe add a column to the cards table for it's image url, where you paste the url of the picture in the seed file
-
-#################################### DONE BELOW THIS LINE
-
-add a "format column" to the table built in decks#index
-
-change the first_or_create in OAth to find_or_create so it doesn't always just go to user.id = 1 when you use facebook to authenticate
-
-users#new old code that worked but wasn't pretty.
-
-<div class="row">
-<div class="col-md-4 col-lg-4 col-sm-12"
-<div class="field">
-<%= f.label :email %><br>
-<%= f.text_field :email %>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-md-4 col-lg-4 col-sm-12"
-<div class="field">
-<%= f.label :password %><br>
-<%= f.password_field :password %>
-</div>
-</div>
-</div>
-
-- login page => 'login' button aligned with rest of form; put some padding on top of the login forms; align footer with rest of content; background color (should choose for entire site -- need a theme);
+    <% end %>
+  </tr>
 
 
 
-- need to get some images for the landing page, and users#show, and decks#show
-need to get the footer to be locked below the image
+2. Need to use a form to render a new resrouce without refreshing the page
+  - hijack the submit action of the form already in use for decks#new 
+  - loot at the ES6 Template Literals for this one 
 
-
-- application.html.erb side bar code => put the create a new deck there?
-<div class="sidebar">
-<% if current_user %>
-<%= render partial: "layouts/navigation_images" %>
-<% else %>
-<%= render partial: "layouts/placeholder_images" %>
-<% end %>
-</div>
-
-
-- need to add the error messages to 'decks/show', 'users/new', 'login', 'cards/new' view files
-##
-- Set up BOOTSTRAP and start working on layout/styling
-##
--for delete, need to link to the right deck or card instead of just the last one in the list. maybe make a delete partial that only shows the button, and will get the deck/card info passed to it? how would that work?
-<!-- <% session[:card_id]= card.id %> this is only going to delete the last one every time -->
-
-<!-- % session[:deck_id] = deck.id %> this is only going to delete the last one every time -->
-
-##
-
-- routes and hidden field forms for decks/:id/edit and decks/cards/id:/edit
-##
-
-- need to make a button to destroy a card and have it in the iteration that displays the deck (I think it's in 'decks/show') same on the user_path page for deleting whole decks
-#need to somehow get the card_id when you click the delete button
-
-
-<%= f.button :submit, class: "btn-primary"%>
-<%= link_to "Delete", f.object, class: 'btn btn-default', data: {method: 'DELETE'}%>
-##
-- form for making a new deck
-  - when you click it, it doesn't give you a place to enter the name, maybe make a form to render on the user_path page rather than link_to the url for it and when you add the name and click "create deck" it instantiates a deck with the name given, then goes to the add card link. other option is to put a 'mass build' form for cards into the new_deck_path page
-  - need deck_controller #new and #create and views decks/new, decks/show, decks/_form
-##
-- form for making a new card
-  form_for :card
-  f.label :name
-  f.text_field :name
-  f.label :quantity
-  f.text_field :quantity
-  end
-  <%= render '/cards/new' %>
-##
-
-- create user (not from API)
-
-MODELS
-  User
-    :name, :email, :password_digest, :uid
-    has_many :decks
-    has_many :cards, through: :decks
-
-  Deck
-    :name, :user_id
-    belongs_to :user
-    has_many :cards
-
-  Card
-    :name, :quantity, :deck_id
-    belongs_to :deck
-
-
-CONTROLLERS
-  UsersController
-    #new
-    #create
-    #show -- route 'users/:id/'--
-      will need to render decks#index
-      user_decks(@user)
-      @user.decks.each do |deck|
-        link_to "#{deck.name}", deck_path(deck)
-      end
-
-  DecksController
-    #show -- route 'users/:id/decks/:id'
-      will need to render deck_list
-      @user.deck.cards.each do |card|
-        li
-          card.name
-          card.quantity
-        li
-      end
-
-    #new
-    #create
-    #destroy
-
-  CardsController - not going to have a link to the individual page, it is just used to make the db records for the deck lists
-    #new
-    #create
+3.  Translate JSON response into JS Model Objects 
+  - must have at least one method on the prototype. (formatters are a good use of this type of functionality)
