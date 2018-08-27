@@ -6,10 +6,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    if !User.find(params[:id])
+    if !User.find(session[:user_id])
       redirect_to root_path
     else
-      @user = User.find(params[:id])
+      @user = User.find(session[:user_id])
     end
 
     if @user != current_user
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @decks = @user.decks
     @formats = Format.all
     @user_most = User.user_with_the_most_decks.first
+    @show_deck = Deck.find(session[:deck_id])
   end
 
   def create

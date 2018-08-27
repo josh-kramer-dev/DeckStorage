@@ -9,9 +9,9 @@ class DecksController < ApplicationController
       @decks = @decks.filter_by_format(params[:format_id])
     end
 
-    respond_to do |format|
-      format.json { render json: @decks}
-      format.html { render :index }
+    # respond_to do |format|
+    #   format.json { render json: @decks}
+    #   format.html { render :index }
   end
 
   def show
@@ -19,11 +19,13 @@ class DecksController < ApplicationController
       redirect_to user_path(current_user)
     end
 
+    @cards = @deck.cards.all
     session[:deck_id] = @deck.id
 
     respond_to do |format|
-      format.json { render json: @deck}
-      format.html { render :show }
+    format.json { render json: @cards }
+    format.html { render :show}
+    end
   end
 
   def new
@@ -32,36 +34,39 @@ class DecksController < ApplicationController
   end
 
   def create
-    @deck = current_user.decks.build(:name => params[:name], :format_id => params[:format_id])
 
-      respond_to do |format|
-        if @deck.save
-          format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
-          format.json { render :show, status: :created, location: @deck }
-        else
-          format.html { render :new }
-          format.json { render json: @deck.errors, status: :unprocessable_entity }
-        end
-      end
+    @deck = current_user.decks.build(:name => params[:name], :format_id => params[:format_id])
+    if @deck.save
+      redirect_to user_deck_path(current_user, @deck)
+    end
+      # respond_to do |format|
+      #   if @deck.save
+      #     format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
+      #     format.json { render :show, status: :created, location: @deck }
+      #   else
+      #     format.html { render :new }
+      #     format.json { render json: @deck.errors, status: :unprocessable_entity }
+      #   end
+      # end
     end
 
   def edit
   end
 
   def update
-    respond_to do |format|
-      if @deck.save
-        format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
-        format.json { render :show, status: :created, location: @deck }
-      else
-        format.html { render :new }
-        format.json { render json: @deck.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @deck.save
+    #     format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
+    #     format.json { render :show, status: :created, location: @deck }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @deck.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def destroy
-    @deck.destroy
+    @deck.delete
     redirect_to user_path(current_user)
   end
 
@@ -73,6 +78,6 @@ class DecksController < ApplicationController
 
 
   def deck_params
-    params.require(:decks).permit(:name, :user_id, :deck_id)
+    params.require(:decks).permit(:name, :user_id, :deck_id, :format_id)
   end
 end
