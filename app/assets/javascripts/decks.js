@@ -1,5 +1,5 @@
 $(function(){
-  $(".button_to").hide();
+  $(".button_to").hide();   
 
   $("a.load_deck").on('click', function(e){ //hijack the click event of selecting a deck
     e.preventDefault(); //prevent the move to the new page
@@ -12,8 +12,3 @@ $(function(){
       })
     })
   })
-
-
-
-
-
