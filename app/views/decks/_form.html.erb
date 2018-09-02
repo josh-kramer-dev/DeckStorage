@@ -10,6 +10,7 @@
  </div>
  <% end %>
 
+<div class="deck-form">
 <%= form_tag('/users/:user_id/decks', method: :post) do %>
 <%= label_tag(:name, "Deck Name") %>
 <%= text_field_tag(:name) %>
@@ -17,3 +18,4 @@
 <%= select_tag(:format_id, options_from_collection_for_select(@formats, "id", "name")) %>
 <%= submit_tag("create deck") %>
 <% end %>
+</div>
