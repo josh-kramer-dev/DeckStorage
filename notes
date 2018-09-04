@@ -31,4 +31,9 @@ This is the HTML I want to build.
   Thoughts:
   $(".button_to) is not specific enough, need to add an id to the one on the card submit page to differentiate from the one on the deck show div
   on second thought, once I get this to add the cards on the show page, I won't need to worry about it being hidden, because it'll be revealed when the deck is shown, which is the only time that it would need to pop up
-  need to also allow edit/update/destroy for cards
+
+
+- take the .button_to out completely and instead have a form that shows up in the div.deck area inside of a child div
+- when that form is submitted, add the new card to the db and then append it to the DOM.
+- for the new deck form, on submit display that deck in the div.deck, along with the form for adding a new card. need to also allow edit/update/destroy for cards
+
