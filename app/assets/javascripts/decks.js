@@ -19,7 +19,9 @@ $(function(){
 //take the response and use it to create a new deck entry in the database
 //append that new deck to "div.decks"
 
-
+      $.get(this.href).success(function(res){
+        console.log(res);
+    });
       e.preventDefault();
       })
 
