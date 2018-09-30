@@ -14,14 +14,12 @@ $(function(){
     });
 
 
-    $("div.deck-form").submit(function(e){
-//need to get the response data (think I should .serialize() it so I get good JSON data)
-//take the response and use it to create a new deck entry in the database
-//append that new deck to "div.decks"
+    $(".button_to").submit(function(e){  //need to change the button_to to a form instead so that I can get the data from the user without having to go to new_user_deck_card_path(user, deck)
 
       $.get(this.href).success(function(res){
-        console.log(res);
+        ;
     });
+      // alert("target acquired");
       e.preventDefault();
       })
 
