@@ -7,7 +7,7 @@ $(function(){
 
       $("div.deck ul").html(""); //clear your target div
       $(".button_to").show(); //show the button. next step is to now add a form to the page for adding a card instead of a button that sends you to a new page.
-      $(".table-cards").toggle(); //need to get it to only toggle the list for that particular deck
+      $(".table-cards").toggle(); //need to get it to only toggle the list for that particular deckjosh
       })
     });
   })
