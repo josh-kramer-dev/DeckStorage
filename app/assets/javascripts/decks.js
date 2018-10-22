@@ -2,7 +2,16 @@ $(function(){
   $(".table-cards").hide();
   $("a.load_deck").on('click', function(e){ //hijack the click event of selecting a deck
     e.preventDefault(); //prevent the move to the new page
-      $(".table-cards").toggle(); //need to get it to only toggle the list for that particular deck
+    var deck = document.getElementById(this.id)
+    console.log(deck)
+
+    $(".info").on('focus',function(){
+      $(".infoDiv").hide();
+      var id = $(this).attr('id');
+      $("#div"+id).show();
+    });
+
+    $(".table-cards").toggle(deck); //need to get it to only toggle the list for that particular deck
     });
   })
 

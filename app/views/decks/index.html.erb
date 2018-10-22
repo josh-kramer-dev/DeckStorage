@@ -13,9 +13,9 @@
       <th scope="row"><%= link_to "#{deck.name}", user_deck_path(@user, deck), class: "load_deck", id:"#{deck.id}"%></th>
       <td > <%= link_to "#{deck.format.name}", user_format_path(@user, deck.format) %></td>
       <td> <%= link_to("", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %> </td>
-
+      <div class="show-deck">
         <% deck.cards.each do |card| %>
-        <tr class="table-cards" id="data-deck-id_<%= deck.id %>">
+        <tr class="table-cards">
           <td><%= card.name %></th>
           <td><%= card.quantity %></td>
           <% @card = card %>
@@ -23,6 +23,7 @@
         <% end %>
         </tr>
     <% end %>
+  </div>
   </tr>
   </tbody>
 </table>
