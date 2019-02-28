@@ -1,29 +1,12 @@
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Deck Name</th>
-      <th scope="col">Format</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @decks.each do |deck| %>
-    <tr class="table-light">
-      <th scope="row"><%= link_to "#{deck.name}", user_deck_path(@user, deck), class: "load_deck", id:"#{deck.id}"%></th>
-      <td > <%= link_to "#{deck.format.name}", user_format_path(@user, deck.format) %></td>
-      <td> <%= link_to("", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %> </td>
-      <td><div class="show-deck">
+<% @decks.each do |deck| %>
+<ol>
+  <div class="deck">
+      <%= link_to "#{deck.name}", user_deck_path(@user, deck), class:"load_deck"%>
+      <div class="cards">
         <% deck.cards.each do |card| %>
-        <tr class="table-cards">
-          <td><%= card.name %></th>
-          <td><%= card.quantity %></td>
-          <% @card = card %>
-          <td> <%= link_to("", card_path(@card), method: :delete, class: "btn btn-danger") %> </td>
-        <% end %>
-      </div></td>
-        </tr>
-        <% end %>
-  </tr>
-  </tbody>
-</table>
+          <ul><%= card.name %></ul>
+          <% end %>
+        </div>
+    </div>
+</ol>
+<% end %>
