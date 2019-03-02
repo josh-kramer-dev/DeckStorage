@@ -3,10 +3,28 @@
   <div class="deck">
       <%= link_to "#{deck.name}", user_deck_path(@user, deck), class:"load_deck"%>
       <div class="cards">
-        <% deck.cards.each do |card| %>
-          <ul><%= card.name %></ul>
-          <% end %>
-        </div>
+      <h2 class="text-center"> <%= @deck.name%> </h2>
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Card Name</th>
+                <th scope="col">Quantity</th>
+                <!-- <th scope="col">Delete</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <% deck.cards.each do |card| %>
+              <tr class="table-light">
+                <th scope="row"><%= card.name %></th>
+                <td><%= card.quantity %></td>
+                <% @card = card %>
+                <!-- <td> <%= link_to("", card_path(@card), method: :delete, class: "btn btn-danger") %> </td> -->
+              <% end %>
+            </tr>
+            </tbody>
+          </table>
     </div>
+  </div>
 </ol>
 <% end %>
