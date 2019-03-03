@@ -4,21 +4,14 @@
     <title>DeckStorage</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all'%>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <div class="container">
-      <div class="header">
-        <%= render partial: "layouts/navigation_links" %>
-      </div>
-
-      <div class="content">
-        <%= render partial: "layouts/errors" %>
-        <%= yield %>
-      </div>
+      <div class="header"><%= render partial: "layouts/navigation_links" %></div>
+      <div class="content"><%= render partial: "layouts/errors" %><%= yield %></div>
     </div>
   </body>
 </html>
