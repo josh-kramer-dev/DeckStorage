@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :formats
   end
 
-  scope :decks do
+  resources :decks do
     resources :cards
   end
 
