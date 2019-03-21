@@ -7,7 +7,7 @@ class DecksController < ApplicationController
 
     if params[:format_id]
       @decks = @decks.filter_by_format(params[:format_id])
-    else 
+    else
       @decks = @user.decks
     end
 
@@ -41,30 +41,30 @@ class DecksController < ApplicationController
     if @deck.save
       redirect_to user_deck_path(current_user, @deck)
     end
-      # respond_to do |format|
-      #   if @deck.save
-      #     format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
-      #     format.json { render :show, status: :created, location: @deck }
-      #   else
-      #     format.html { render :new }
-      #     format.json { render json: @deck.errors, status: :unprocessable_entity }
-      #   end
-      # end
+      respond_to do |format|
+        if @deck.save
+          format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
+          format.json { render :show, status: :created, location: @deck }
+        else
+          format.html { render :new }
+          format.json { render json: @deck.errors, status: :unprocessable_entity }
+        end
+      end
     end
 
   def edit
   end
 
   def update
-    # respond_to do |format|
-    #   if @deck.save
-    #     format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
-    #     format.json { render :show, status: :created, location: @deck }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @deck.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @deck.save
+        format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
+        format.json { render :show, status: :created, location: @deck }
+      else
+        format.html { render :new }
+        format.json { render json: @deck.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy

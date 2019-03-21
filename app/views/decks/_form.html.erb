@@ -14,8 +14,13 @@
   <%= form_tag('/users/:user_id/decks', method: :post) do %>
     <%= label_tag(:name, "Deck Name") %>
     <%= text_field_tag(:name) %>
+    <br>
     <%= label_tag(:format_id, "Format") %>
     <%= select_tag(:format_id, options_from_collection_for_select(@formats, "id", "name")) %>
+    <br>
+    <%= label_tag(:card, "card") %>
+    <%= text_area_tag(:card) %>
+    <br>
     <%= submit_tag("create deck", class: "form_submit") %>
   <% end %>
 </div>
