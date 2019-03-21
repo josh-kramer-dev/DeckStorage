@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
 
   def new
+    binding.pry
     @user = current_user
     @deck = Deck.find(session[:deck_id])
     @card = @deck.cards.build
