@@ -1,3 +1,5 @@
+<% @card = @deck.cards.build %>
+
 <%= form_for(@card) do |f| %>
 
   <% if @card.errors.any? %>

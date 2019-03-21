@@ -1,26 +1,18 @@
-<% if @deck.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@deck.errors.count, "error") %> prohibited this deck from being saved:</h2>
-
-    <ul>
-      <% @deck.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
- </div>
- <% end %>
-
 <div class="deck-form">
-  <%= form_tag('/users/:user_id/decks', method: :post) do %>
-    <%= label_tag(:name, "Deck Name") %>
-    <%= text_field_tag(:name) %>
-    <br>
-    <%= label_tag(:format_id, "Format") %>
-    <%= select_tag(:format_id, options_from_collection_for_select(@formats, "id", "name")) %>
-    <br>
-    <%= label_tag(:card, "card") %>
-    <%= text_area_tag(:card) %>
-    <br>
-    <%= submit_tag("create deck", class: "form_submit") %>
-  <% end %>
+
+<% form_for [@deck, @card] do |f| %>
+<!-- <div class="form-group">
+  <%= f.label :name %><br>
+  <%= f.text_field :name, class: "form-control" %></div>
+
+<div class="form-group">
+  <%= f.label :quantity %><br>
+  <%= f.number_field :quantity, class: "form-control" %></div>
+
+<div class="actions">
+  <%= f.submit class: "btn btn-primary" %>
+</div> -->
+
+<% end %>
+
 </div>
