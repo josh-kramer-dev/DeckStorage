@@ -1,22 +1,28 @@
-<h3 class="text-center">Here are your decks.</h3>
-
-<br>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Deck Name</th>
-      <th scope="col">Format</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @decks.each do |deck| %>
-    <tr class="table-light">
-      # <th scope="row"><%= link_to "#{deck.name}", user_deck_path(@user, deck)%></th>
-      # <td> <%= link_to "#{deck.format.name}", user_format_path(@user, deck.format) %></td>
-      # <td> <%= link_to("", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %> </td>
-
-    <% end %>
-  </tr>
-  </tbody>
-</table>
+<% @decks.each do |deck| %>
+<ol>
+  <div class="deck">
+      <%= link_to "#{deck.name}", user_deck_path(@user, deck), class:"load_deck"%>
+      <%= link_to("Edit Deck", user_deck_path(@user, deck), class: "btn btn-danger") %>
+      <div class="cards">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Card Name</th>
+                <th scope="col">Quantity</th>
+                <!-- <th scope="col"></th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <% deck.cards.each do |card| %>
+              <tr class="table-light">
+                <th scope="row"><%= card.name %></th>
+                <td><%= card.quantity %></td>
+                <% @card = card %>
+              <% end %>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>
+</ol>
+<% end %>

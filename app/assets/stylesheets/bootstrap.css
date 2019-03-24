@@ -9658,3 +9658,7 @@ a.text-dark:hover, a.text-dark:focus {
 .list-group-item h6 {
   color: inherit;
 }
+
+.load_deck {
+  display: none
+}
