@@ -1,28 +1,26 @@
 <% @decks.each do |deck| %>
 <ol>
   <div class="deck">
-      <%= link_to "#{deck.name}", user_deck_path(@user, deck), class:"load_deck"%>
-      <%= link_to("Edit Deck", user_deck_path(@user, deck), class: "btn btn-danger") %>
+      <%= link_to("#{deck.name}", user_deck_path(@user, deck), class:"load_deck") %>
       <div class="cards">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Card Name</th>
-                <th scope="col">Quantity</th>
-                <!-- <th scope="col"></th> -->
-              </tr>
-            </thead>
-            <tbody>
-              <% deck.cards.each do |card| %>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Card Name</th>
+               <th scope="col">Quantity</th>
+             </tr>
+          </thead>
+          <tbody>
+            <% deck.cards.each do |card| %>
               <tr class="table-light">
                 <th scope="row"><%= card.name %></th>
                 <td><%= card.quantity %></td>
                 <% @card = card %>
               <% end %>
               </tr>
-            </tbody>
-          </table>
-    </div>
+           </tbody>
+        </table>
+      </div>
   </div>
 </ol>
 <% end %>
