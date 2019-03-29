@@ -1,3 +1,23 @@
+1. form for making a new deck works, it send you to the deck#show page.
+  a. on submit, take the resource that would have been created and use it to make the new deck through JS
+  b. when that new deck is created, append it to the decks#show div
+2. need to make a form for adding cards
+  a. on submit, create the new card through JS and append it to the deck_show div
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 1. I want to load(or render?) <div class="decks"> on doc load
   $(function(){
     var $decks = $.get("div.decks");
@@ -36,4 +56,3 @@ This is the HTML I want to build.
 - take the .button_to out completely and instead have a form that shows up in the div.deck area inside of a child div
 - when that form is submitted, add the new card to the db and then append it to the DOM.
 - for the new deck form, on submit display that deck in the div.deck, along with the form for adding a new card. need to also allow edit/update/destroy for cards
-
