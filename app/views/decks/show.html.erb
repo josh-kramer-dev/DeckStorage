@@ -15,7 +15,6 @@
           <th scope="row"><%= card.name %></th>
           <td><%= card.quantity %></td>
           <% @card = card %>
-          <td> <%= link_to("", card_path(@card), method: :delete, class: "btn btn-danger") %> </td>
         <% end %>
       </tr>
       </tbody>
@@ -23,7 +22,6 @@
 <br>
 </div>
 
-<!-- 
+
 <h4>Edit Deck </h4>
 <%= render :template => '/cards/_form' %>
-</div> -->
