@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :cards
   end
 
-  post '/decks/cards/new', to: 'cards#new'
+  post '/decks/:id/cards/new', to: 'cards#create'
 
   root 'welcome#home'
 
