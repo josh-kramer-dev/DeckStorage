@@ -1,7 +1,6 @@
 class CardsController < ApplicationController
 
   def new
-    binding.pry
     @user = current_user
     @deck = Deck.find(session[:deck_id])
     @card = @deck.cards.build
@@ -15,19 +14,6 @@ class CardsController < ApplicationController
       redirect_to user_deck_path(current_user, @deck)
     end
   end
-
-  # def update
-  #   @deck = Deck.find(session[:deck_id])
-  #   respond_to do |format|
-  #     if @deck.save
-  #       format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' }
-  #       format.json { render :show, status: :created, location: @deck }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @deck.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
   def destroy
     card = Card.find(params[:id])

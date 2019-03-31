@@ -1,1 +1,27 @@
-this is where i want to add cards to the deck
+<% @card = @deck.cards.build %>
+<%= form_for(@card, :url => new_deck_card_path(@deck)) do |f| %>
+
+  <% if @card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+        <% @card.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+   </div>
+   <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity, class: "form-control" %></div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -10,10 +10,6 @@ class DecksController < ApplicationController
     else
       @decks = @user.decks
     end
-
-    # respond_to do |format|
-    #   format.json { render json: @decks}
-    #   format.html { render :index }
   end
 
   def show
