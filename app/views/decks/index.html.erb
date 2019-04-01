@@ -5,16 +5,20 @@
 <% @decks.each do |deck| %>
 <ol>
   <div class="deck">
-      <%= link_to "#{deck.name}", user_deck_path(@user, deck), class:"load_deck"%>
-      <%= link_to "- #{deck.format.name}", user_format_path(@user, deck.format) %>
+      <table class="table table-hover">
+          <tr>
+            <th scope="col"><%= link_to "#{deck.name}", user_deck_path(@user, deck), class:"load_deck"%></th>
+            <th scope="col"><%= link_to "#{deck.format.name}", user_format_path(@user, deck.format) %></th>
+            <th scope="col"><%= link_to("Delete Deck", user_deck_path(@user, deck), method: :delete) %> </th>
+            <th scope="col"><%= link_to("Edit Deck", user_deck_path(@user, deck)) %></th>
+          </tr>
+      </table>
       <div class="cards">
           <table class="table table-hover">
             <thead>
               <tr>
                 <th scope="col">Card Name</th>
                 <th scope="col">Quantity</th>
-                <th> <%= link_to("Delete Deck", user_deck_path(@user, deck), method: :delete, class: "btn btn-danger") %> </td>
-                <th scope="col"><%= link_to("Edit Deck", user_deck_path(@user, deck), class: "btn btn-danger") %></th>
               </tr>
             </thead>
             <tbody>

@@ -8,8 +8,9 @@ class CardsController < ApplicationController
 
   def create
     @deck = Deck.find(session[:deck_id])
-    @card = @deck.cards.build(:name => params[:card][:name], :quantity => params[:card][:quantity])
+    @card = @deck.cards.build(card_params)
 
+# this logic causes the page to refresh after every new card instead of staying on the page
     if @deck.save
       redirect_to user_deck_path(current_user, @deck)
     end

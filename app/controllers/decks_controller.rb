@@ -21,7 +21,7 @@ class DecksController < ApplicationController
     session[:deck_id] = @deck.id
 
     respond_to do |format|
-    format.json { render json: @cards }
+    format.json { render json: @deck }
     format.html { render :show}
     end
   end
@@ -35,11 +35,11 @@ class DecksController < ApplicationController
 
     @deck = current_user.decks.build(:name => params[:name], :format_id => params[:format_id])
     if @deck.save
-      redirect_to user_deck_path(current_user, @deck)
+      redirect_to user_path(current_user)
     end
       respond_to do |format|
         if @deck.save
-          format.html { redirect_to user_deck_path(current_user, @deck), notice: 'Deck was successfully created.' } and return
+          format.html { redirect_to user_path(current_user), notice: 'Deck was successfully created.' } and return
           format.json { render :show, status: :created, location: @deck }
         else
           format.html { render :new }

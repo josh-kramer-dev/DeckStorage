@@ -1,5 +1,14 @@
-new card form works again. now i need to get the delete card buttons back and then the delete deck buttons back. after that is to AJAX a new deck, but need to figure out how I'm going to satisfy the prototype req first"
-[master 8dcb80b] new card form works again. now i need to get the delete card buttons back and then the delete deck buttons back. after that is to AJAX a new deck, but need to figure out how I'm going to satisfy the prototype req first
+A. hijack the submit event of our form
+B. take the form data and send it to the server as a AJAX Post request
+    -how do we know the URL of that POST request
+C. take the data from the AJAX POST request and create the corresponding deck
+D. Send back HTML/JSON of the deck that was created and inject it into the deck into the decks-index
+
+
+1. make a save deck button on the deck show page, then in the decks_controller have it just render decks index instead of redirecting
+
+
+
 
 2. Need to use a form to render a new resource without refreshing the page
   - hijack the submit action of the form already in use for decks#new
