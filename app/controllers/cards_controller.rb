@@ -1,18 +1,28 @@
 class CardsController < ApplicationController
+  before_action :set_deck
 
-  def new
-    @user = current_user
-    @deck = Deck.find(session[:deck_id])
-    @card = @deck.cards.build
+  def index
+    @cards = @deck.cards
+
+    respond_to do |format|
+      format.html {render 'index.html', :layout => false}
+      format.js {render 'index.js', :layout => false}
+    end
   end
 
+  # def new
+  #   @user = current_user
+  #   @deck = Deck.find(session[:deck_id])
+  #   @card = @deck.cards.build
+  # end
+
   def create
-    @deck = Deck.find(session[:deck_id])
     @card = @deck.cards.build(:name => params[:card][:name], :quantity => params[:card][:quantity])
 
-# this logic causes the page to refresh after every new card instead of staying on the page
-    if @deck.save
-      redirect_to user_deck_path(current_user, @deck)
+    if @card.save
+      render 'create.js', :layout => false
+    else
+      render "decks/show"
     end
   end
 
@@ -24,6 +34,10 @@ class CardsController < ApplicationController
   end
 
 private
+  def set_deck
+    @deck = Deck.find(params[:deck_id])
+  end
+
   def card_params
     params.require(:cards).permit(:id, :name, :quantity, :deck_id)
   end

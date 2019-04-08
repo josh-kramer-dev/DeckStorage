@@ -1,0 +1,3 @@
+$("#card_content").val("");
+var $ol = $("div.cards ol")
+$ol.append("<%=j(render('cards/card', :card => @card)) %>");
