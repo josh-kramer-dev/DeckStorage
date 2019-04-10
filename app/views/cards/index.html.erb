@@ -1,5 +1,17 @@
-<ol>
-  <% @cards.each do |card| %>
-  <li><%= card.content %></li>
-  <% end %>
-</ol>
+<h2 class="text-center"> <%= @deck.name%> </h2>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Card Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ol>
+ 
+        </ol>
+      </tbody>
+    </table>
+<br>

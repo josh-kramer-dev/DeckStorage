@@ -1,6 +1,11 @@
 $(function(){
+  $("a.load_deck").on('click', function(e) {
+    e.preventDefault();
+    $(this).parent().find("div").toggleClass("cards");
+  });
+
   $("#new_card").on("submit", function(e){
-    e.preventDefault(e);
+    // e.preventDefault(e);
     //1. we need the URL to submit the POST request too
     url = this.action
 
@@ -14,14 +19,14 @@ $(function(){
     };
 
     //low level
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: data,
-      debugger
-      success: function(response){
-      }
-    });
+    // $.ajax({
+    //   type: "POST",
+    //   url: url,
+    //   data: data,
+    //   debugger
+    //   success: function(response){
+    //   }
+    // });
 
   });
 
@@ -32,13 +37,9 @@ $(function(){
   //   console.log(this);
   // $("div.decks").append();
   // });
-
-
-  $("a.load_deck").on('click', function(e) {
-    e.preventDefault();
-    $(this).parent().find("div").toggleClass("cards");
-  });
 })
+
+
 
 
 

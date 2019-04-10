@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  # before_action :set_deck
+  before_action :set_deck
 
   def index
     @cards = @deck.cards
@@ -10,20 +10,17 @@ class CardsController < ApplicationController
     end
   end
 
-  # def new
-  #   @user = current_user
-  #   @deck = Deck.find(session[:deck_id])
-  #   @card = @deck.cards.build
-  # end
+  def new
+    @user = current_user
+    @card = @deck.cards.build
+  end
 
   def create
-    @deck = Deck.find(session[:deck_id])
-
     @card = @deck.cards.build(:name => params[:card][:name], :quantity => params[:card][:quantity])
 
     if @card.save
-    #   render 'create.js', :layout => false
-    # else
+      render 'create.js', :layout => false
+    else
       render "decks/show"
     end
   end
@@ -37,7 +34,7 @@ class CardsController < ApplicationController
 
 private
   def set_deck
-    @deck = Deck.find(params[:deck_id])
+    @deck = Deck.find(session[:deck_id])
   end
 
   def card_params
