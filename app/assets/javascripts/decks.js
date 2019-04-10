@@ -18,8 +18,8 @@ $(function(){
       type: "POST",
       url: url,
       data: data,
+      debugger
       success: function(response){
-        debugger
       }
     });
 
