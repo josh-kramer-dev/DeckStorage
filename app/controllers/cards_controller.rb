@@ -19,9 +19,9 @@ class CardsController < ApplicationController
     @card = @deck.cards.build(:name => params[:card][:name], :quantity => params[:card][:quantity])
 
     if @card.save
-      render 'create.js', :layout => false
-    else
       render "decks/show"
+      # render 'create.js', :layout => false
+    # else
     end
   end
 

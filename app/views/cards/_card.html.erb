@@ -1,1 +1,7 @@
-<li><%= card.name %></li>
+<tr class="table-light">
+  <th scope="row"><%= card.name %></th>
+    <td><%= card.quantity %></td>
+        <% @card = card %>
+    <td> <%= link_to("", deck_card_path(@deck, @card), method: :delete, class: "btn btn-danger") %> </td>
+  <% end %>
+</tr>
